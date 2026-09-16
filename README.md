@@ -4,7 +4,7 @@
 **Ano/Semestre:** 2026 - 2º Semestre
 
 ## 👥 Integrantes do Grupo
-* [Eduardo Henrryque](https://github.com/link-do-perfil-1)
+* [Eduardo Henryque Camargo Silva](https://github.com/link-do-perfil-1)
 * [Felipe Augusto Ribeiro Matos](https://github.com/fematoss01)
 * [Igor Rafael Pitoli](https://github.com/link-do-perfil-3)
 * [Mateus Rodrigues Meretica](https://github.com/matrmeretica)
