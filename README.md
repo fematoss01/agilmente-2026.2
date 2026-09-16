@@ -11,15 +11,17 @@
 
 ## 💻 Sobre o Projeto
 **Objetivo:** 
-[Descreva aqui o objetivo principal do software que vocês vão desenvolver]
+Desenvolver um sistema de gestão e inscrições para Semanas Acadêmicas, centralizando a programação do evento e facilitando a participação dos alunos através de uma plataforma acessível e organizada.
 
 **Principais Funcionalidades:**
-* [Funcionalidade 1]
-* [Funcionalidade 2]
-* [Funcionalidade 3]
+* **Catálogo de Eventos:** Menu interativo (cardápio) exibindo toda a programação da semana acadêmica, incluindo palestras e minicursos.
+* **Detalhes da Programação:** Informações completas sobre cada evento (tema, palestrante/ministrante, horários, local e vagas disponíveis).
+* **Sistema de Inscrições:** Permite que os alunos se inscrevam individualmente nos eventos desejados da semana acadêmica.
+* **Controle de Presença:** Funcionalidade para registro e acompanhamento da frequência dos alunos inscritos nas atividades.
 
 **Público-alvo:** 
-[Quem vai usar este software? Ex: Estudantes, clínicas, lojistas, etc.]
+* **Alunos:** Para visualização da programação, inscrições e acompanhamento.
+* **Organizadores/Instituição:** Para gerenciamento das atividades, controle de vagas e emissão de listas de presença.
 
 ## 📂 Sumário de Documentos do Repositório
 Por enquanto os links estão inativos, conforme orientação da professora.
