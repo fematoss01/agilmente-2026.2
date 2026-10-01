@@ -15,7 +15,7 @@ A *Tabela 1* a seguir contém os Requisitos Funcionais (RF) elicitados para o si
 | **RF09** | O sistema deve impedir que o aluno se inscreva em atividades que possuam choque de horário com outra em que ele já esteja inscrito. | Alta | RF08 |
 | **RF10** | O sistema deve permitir que o aluno cancele sua inscrição em uma atividade até o prazo limite estipulado pela organização. | Média | RF08 |
 | **RF11** | O sistema deve disponibilizar uma área restrita para o aluno visualizar a sua programação pessoal com todas as atividades em que está inscrito. | Alta | RF08, RF10 |
-| **RF12** | O sistema deve permitir que o organizador registre a presença dos participantes nas atividades por meio de listagem de participantes. | Alta | RF08, RF13 |
+| **RF12** | O sistema deve permitir que o organizador registre a presença dos participantes nas atividades por meio de uma lista. | Alta | RF08, RF13 |
 | **RF13** | O sistema deve permitir que o organizador acompanhe a taxa de ocupação das salas e a quantidade de inscritos por atividade em um painel gerencial. | Baixa | RF03, RF08 |
 
 *Tabela 1: Requisitos Funcionais*
