@@ -20,10 +20,10 @@ A Tabela 3 a seguir contém as Histórias de Usuário elicitadas.
             <span id="ustory-01"></span>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle" rowspan="1">US01</td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle" rowspan="1">Eu, como aluno, quero poder conferir o meu cronograma para me preparar para a semana.</td>
-            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle" rowspan="1"><ol><li>No sistema tem que ter uma aba destinada ao cronograma do aluno. </li><li> O sistem deve ter uma área para o cronograma da semana e se atualizar a partir de qualquer alteração no cronograma. </li><li>A área deve listar apenas as atividades nas quais o aluno tem inscrição confirmada.</li><li>As atividades devem aparecer em ordem cronológica a pardir do mais proximo.</li></ol></td>
+            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle" rowspan="1"><ol><li> O sistema deve ter uma área para o cronograma da semana e se atualizar a partir de alterações em atividades inscritas. </li><li>As atividades devem aparecer em ordem cronológica a partir do mais próximo.</li></ol></td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">Alta</td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">RF11</td>
-            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">0</td>
+            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">8.6</td>
         </tr>
         <tr>
             <span id="ustory-01"></span>
@@ -32,7 +32,7 @@ A Tabela 3 a seguir contém as Histórias de Usuário elicitadas.
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle" rowspan="1"><ol><li>As informações das atividade devem estar disponíveis para os alunos.</li><li> E o sistema deve permitir que os alunos se inscrevam nas atividades.</li></ol></td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle"> Alta </td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">RF03</td>
-            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">0</td>
+            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">8</td>
         </tr>
         <tr>
             <span id="ustory-01"></span>
@@ -41,7 +41,7 @@ A Tabela 3 a seguir contém as Histórias de Usuário elicitadas.
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle" rowspan="1"><ol><li>O sistema deve fornecer lista dos alunos cadastrados.</li><li> O sistema deve permitir registrar quais alunos faltaram e quais foram.</li></ol></td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">Alta</td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">RF12</td>
-            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">0</td>
+            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">8.7</td>
         </tr>
         <tr>
             <span id="ustory-01"></span>
@@ -50,7 +50,7 @@ A Tabela 3 a seguir contém as Histórias de Usuário elicitadas.
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle" rowspan="1"><ol><li>Os alunos podem cancelar as inscrições em atividades até o periodo determinado pelo organizador.</li><li> Os alunos devem receber a data do fim do periodo de cancelamento nas informações da atividade.</li></ol></td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">Média</td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">RF10</td>
-            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">0</td>
+            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">6</td>
         </tr>
         <tr>
             <span id="ustory-01"></span>
@@ -59,7 +59,7 @@ A Tabela 3 a seguir contém as Histórias de Usuário elicitadas.
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle" rowspan="1"><ol><li>O sistema deve exigir nome completo, e-mail institucional, RA e senha.</li><li> O sistema não deve permitir o cadastro de e-mails ou RAs já existentes na base.</li></ol></td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">Alta</td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">RF01</td>
-            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">0</td>
+            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">5</td>
         </tr>
         <tr>
             <span id="ustory-01"></span>
@@ -68,7 +68,7 @@ A Tabela 3 a seguir contém as Histórias de Usuário elicitadas.
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle" rowspan="1"><ol><li>O sistema deve validar o e-mail e a senha.</li><li> Em caso de dados incorretos, exibir mensagem de erro clara ao usuário.</li></ol></td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">Alta</td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">RF02</td>
-            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">0</td>
+            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">4.3</td>
         </tr>
         <tr>
             <span id="ustory-01"></span>
@@ -77,7 +77,7 @@ A Tabela 3 a seguir contém as Histórias de Usuário elicitadas.
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle" rowspan="1"><ol><li>O sistema deve redirecionar o utilizador diretamente para a página de consulta de eventos após o login bem-sucedido.</li></ol></td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">Média</td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">RNF01</td>
-            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">0</td>
+            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">2.7</td>
         </tr>
         <tr>
             <span id="ustory-01"></span>
@@ -86,7 +86,7 @@ A Tabela 3 a seguir contém as Histórias de Usuário elicitadas.
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle" rowspan="1"><ol><li>O fluxo completo de registo de conta e primeiro login deve ser concluído, em média, em 7 minutos ou menos.</li></ol></td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">Média</td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">RNF02</td>
-            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">0</td>
+            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">2</td>
         </tr>
         <tr>
             <span id="ustory-01"></span>
@@ -95,7 +95,7 @@ A Tabela 3 a seguir contém as Histórias de Usuário elicitadas.
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle" rowspan="1"><ol><li>O painel deve listar todas as atividades e a quantidade atual de inscritos.</li><li>Deve exibir visualmente a taxa de ocupação (percentual de vagas preenchidas).</li></ol></td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">Baixa</td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">RF13</td>
-            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">0</td>
+            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">7</td>
         </tr>
         <tr>
             <span id="ustory-01"></span>
@@ -104,7 +104,7 @@ A Tabela 3 a seguir contém as Histórias de Usuário elicitadas.
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle" rowspan="1"><ol><li>A página da atividade deve mostrar a descrição completa, ministrante, local, data e horário.</li><li>A quantidade de vagas totais e restantes deve ser atualizada em tempo real.</li></ol></td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">Alta</td>
             <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">RF07</td>
-            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">0</td>
+            <td style="border-style:solid;border-width:1px;text-align:center;vertical-align:middle">5.3</td>
         </tr>
 </table>
 
