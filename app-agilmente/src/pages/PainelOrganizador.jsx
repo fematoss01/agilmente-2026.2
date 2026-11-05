@@ -2,15 +2,28 @@ import { useState, useEffect } from 'react';
 import { dbInicial } from '../data/db';
 import Navbar from '../components/Navbar';
 
+const formatarData = (dataStr) => {
+  if (!dataStr) return '';
+  const partes = dataStr.split('-');
+  if (partes.length !== 3) return dataStr;
+  return `${partes[2]}/${partes[1]}/${partes[0]}`;
+};
+
 export default function PainelOrganizador() {
   const [eventos, setEventos] = useState([]);
-  const [eventoSelecionadoId, setEventoSelecionadoId] = useState('');
-  const [presencas, setPresencas] = useState({});
+  const [filtroStatus, setFiltroStatus] = useState('todos');
 
-  // Estados do formulário de novo evento
-  const [novoTitulo, setNovoTitulo] = useState('');
-  const [novoTipo, setNovoTipo] = useState('Palestra');
-  const [novasVagas, setNovasVagas] = useState('');
+  // Estados do formulário
+  const [editandoId, setEditandoId] = useState(null);
+  const [titulo, setTitulo] = useState('');
+  const [tipo, setTipo] = useState('Palestra');
+  const [vagasTotais, setVagasTotais] = useState('');
+  const [descricao, setDescricao] = useState('');
+  const [ministrante, setMinistrante] = useState('');
+  const [data, setData] = useState('');
+  const [horarioInicio, setHorarioInicio] = useState('');
+  const [horarioFim, setHorarioFim] = useState('');
+  const [local, setLocal] = useState('');
 
   useEffect(() => {
     const eventosSalvos = localStorage.getItem('eventosData');
@@ -27,111 +40,137 @@ export default function PainelOrganizador() {
     salvarEventos(novos);
   };
 
-  const criarEvento = (e) => {
+  const iniciarEdicao = (evento) => {
+    setEditandoId(evento.id);
+    setTitulo(evento.titulo);
+    setTipo(evento.tipo);
+    setVagasTotais(evento.vagasTotais);
+    setDescricao(evento.descricao || '');
+    setMinistrante(evento.ministrante || '');
+    setData(evento.data);
+    const partesHorario = evento.horario.split(' - ');
+    setHorarioInicio(partesHorario[0] || '');
+    setHorarioFim(partesHorario[1] || '');
+    setLocal(evento.local);
+  };
+
+  const cancelarEdicao = () => {
+    setEditandoId(null);
+    setTitulo(''); setTipo('Palestra'); setVagasTotais(''); setDescricao('');
+    setMinistrante(''); setData(''); setHorarioInicio(''); setHorarioFim(''); setLocal('');
+  };
+
+  const salvarEvento = (e) => {
     e.preventDefault();
-    const novoEvento = {
-      id: Date.now(),
-      titulo: novoTitulo,
-      tipo: novoTipo,
-      data: "2026-11-15", horario: "14:00 - 16:00", local: "A definir", ministrante: "A definir",
-      vagasTotais: parseInt(novasVagas),
-      vagasOcupadas: 0,
-      ativo: true,
-      inscritos: []
-    };
-    salvarEventos([...eventos, novoEvento]);
-    setNovoTitulo(''); setNovasVagas('');
-    alert('Evento criado com sucesso!');
+    const horarioFormatado = `${horarioInicio} - ${horarioFim}`;
+
+    if (editandoId) {
+      const novos = eventos.map(ev => ev.id === editandoId ? {
+        ...ev, titulo, tipo, vagasTotais: parseInt(vagasTotais), descricao, ministrante, data, horario: horarioFormatado, local
+      } : ev);
+      salvarEventos(novos);
+      alert('Evento atualizado com sucesso!');
+    } else {
+      const novoEvento = {
+        id: Date.now(),
+        titulo, tipo, descricao, ministrante, data, horario: horarioFormatado, local,
+        vagasTotais: parseInt(vagasTotais),
+        vagasOcupadas: 0,
+        ativo: true,
+        inscritos: []
+      };
+      salvarEventos([...eventos, novoEvento]);
+      alert('Evento criado com sucesso!');
+    }
+    cancelarEdicao();
   };
 
-  const registrarPresenca = (email, status) => {
-    setPresencas(prev => ({ ...prev, [email]: status }));
-  };
-
-  const eventoAtual = eventos.find(e => e.id.toString() === eventoSelecionadoId);
-  const listaInscritos = eventoAtual?.inscritos || [];
+  const eventosExibidos = eventos.filter(evento => {
+    if (filtroStatus === 'ativos') return evento.ativo !== false;
+    if (filtroStatus === 'desativados') return evento.ativo === false;
+    return true; 
+  });
 
   return (
     <>
       <Navbar />
-      <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
+      {/* Container centralizado com limite de largura */}
+      <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto', fontFamily: 'sans-serif' }}>
         <h1>Painel Gerencial</h1>
         
-        {/* RF03: Criar Atividades */}
-        <div style={{ backgroundColor: '#f0f2f5', padding: '20px', borderRadius: '8px', marginBottom: '30px' }}>
-          <h2>Criar Novo Evento</h2>
-          <form onSubmit={criarEvento} style={{ display: 'flex', gap: '15px', alignItems: 'center', flexWrap: 'wrap' }}>
-            <input type="text" placeholder="Título da Atividade" required value={novoTitulo} onChange={e => setNovoTitulo(e.target.value)} style={{ padding: '8px' }} />
-            <select value={novoTipo} onChange={e => setNovoTipo(e.target.value)} style={{ padding: '8px' }}>
+        {/* Formulário */}
+        <div style={{ backgroundColor: editandoId ? '#fffbe6' : '#f0f2f5', border: editandoId ? '1px solid #ffe58f' : 'none', padding: '20px', borderRadius: '8px', marginBottom: '30px' }}>
+          <h2>{editandoId ? 'Editar Evento' : 'Criar Novo Evento'}</h2>
+          <form onSubmit={salvarEvento} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
+            <input type="text" placeholder="Título da Atividade" required value={titulo} onChange={e => setTitulo(e.target.value)} style={{ padding: '8px' }} />
+            <select value={tipo} onChange={e => setTipo(e.target.value)} style={{ padding: '8px' }}>
               <option value="Palestra">Palestra</option>
               <option value="Minicurso">Minicurso</option>
+              <option value="Mesa-redonda">Mesa-redonda</option>
             </select>
-            <input type="number" placeholder="Total de Vagas" required value={novasVagas} onChange={e => setNovasVagas(e.target.value)} style={{ padding: '8px', width: '120px' }} />
-            <button type="submit" style={{ padding: '9px 15px', backgroundColor: '#1890ff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Cadastrar Evento</button>
+            <input type="text" placeholder="Breve Descrição" required value={descricao} onChange={e => setDescricao(e.target.value)} style={{ padding: '8px' }} />
+            <input type="text" placeholder="Nome do Ministrante" required value={ministrante} onChange={e => setMinistrante(e.target.value)} style={{ padding: '8px' }} />
+            <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+              <input type="date" required value={data} onChange={e => setData(e.target.value)} style={{ padding: '8px', flex: 1 }} />
+              <div style={{ display: 'flex', gap: '5px', flex: 1, alignItems: 'center' }}>
+                <input type="time" required value={horarioInicio} onChange={e => setHorarioInicio(e.target.value)} style={{ padding: '8px', flex: 1 }} />
+                <span>às</span>
+                <input type="time" required value={horarioFim} onChange={e => setHorarioFim(e.target.value)} style={{ padding: '8px', flex: 1 }} />
+              </div>
+            </div>
+            <div style={{ display: 'flex', gap: '10px' }}>
+              <input type="text" placeholder="Local" required value={local} onChange={e => setLocal(e.target.value)} style={{ padding: '8px', flex: 2 }} />
+              <input type="number" placeholder="Vagas Totais" required value={vagasTotais} onChange={e => setVagasTotais(e.target.value)} style={{ padding: '8px', flex: 1 }} />
+            </div>
+            <div style={{ gridColumn: '1 / -1', display: 'flex', gap: '10px' }}>
+              <button type="submit" style={{ padding: '10px 20px', backgroundColor: '#1890ff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>
+                {editandoId ? 'Salvar Alterações' : 'Cadastrar Evento'}
+              </button>
+              {editandoId && (
+                <button type="button" onClick={cancelarEdicao} style={{ padding: '10px 20px', backgroundColor: '#ccc', color: 'black', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+                  Cancelar Edição
+                </button>
+              )}
+            </div>
           </form>
         </div>
 
-        {/* RF13: Taxa de Ocupação e RF04: Desativar */}
-        <h2>Gestão de Eventos</h2>
+        {/* Gestão de Eventos com Filtro */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+          <h2 style={{ margin: 0 }}>Gestão de Eventos</h2>
+          <div>
+            <label style={{ fontWeight: 'bold', marginRight: '10px' }}>Filtrar por Status:</label>
+            <select value={filtroStatus} onChange={e => setFiltroStatus(e.target.value)} style={{ padding: '8px' }}>
+              <option value="todos">Todos</option>
+              <option value="ativos">Apenas Ativos</option>
+              <option value="desativados">Apenas Desativados</option>
+            </select>
+          </div>
+        </div>
+
         <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginBottom: '40px' }}>
-          {eventos.map(evento => {
+          {eventosExibidos.map(evento => {
             const taxa = evento.vagasTotais > 0 ? ((evento.vagasOcupadas / evento.vagasTotais) * 100).toFixed(0) : 0;
             const isDesativado = evento.ativo === false;
             
             return (
-              <div key={evento.id} style={{ border: '1px solid #ccc', padding: '15px', width: '300px', borderRadius: '8px', opacity: isDesativado ? 0.6 : 1 }}>
+              <div key={evento.id} style={{ border: '1px solid #ccc', padding: '15px', width: '300px', borderRadius: '8px', opacity: isDesativado ? 0.6 : 1, position: 'relative' }}>
                 <h3 style={{ margin: '0 0 10px 0' }}>{evento.titulo} {isDesativado && "(Desativado)"}</h3>
+                <p style={{ margin: '5px 0', fontSize: '14px' }}><strong>Data:</strong> {formatarData(evento.data)} - {evento.horario}</p>
                 <p style={{ margin: '5px 0' }}><strong>Inscritos:</strong> {evento.vagasOcupadas} / {evento.vagasTotais}</p>
                 <div style={{ width: '100%', backgroundColor: '#eee', borderRadius: '4px', height: '20px', marginTop: '10px', marginBottom: '15px' }}>
                   <div style={{ width: `${taxa}%`, backgroundColor: taxa > 80 ? '#ff4d4f' : '#52c41a', height: '100%', borderRadius: '4px', textAlign: 'center', color: 'white', fontSize: '12px', lineHeight: '20px' }}>{taxa}%</div>
                 </div>
-                <button onClick={() => toggleStatusEvento(evento.id)} style={{ width: '100%', padding: '8px', backgroundColor: isDesativado ? '#52c41a' : '#ff4d4f', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
-                  {isDesativado ? 'Ativar Evento' : 'Desativar Evento'}
-                </button>
+                <div style={{ display: 'flex', gap: '10px' }}>
+                  <button onClick={() => iniciarEdicao(evento)} style={{ flex: 1, padding: '8px', backgroundColor: '#faad14', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Editar</button>
+                  <button onClick={() => toggleStatusEvento(evento.id)} style={{ flex: 1, padding: '8px', backgroundColor: isDesativado ? '#52c41a' : '#ff4d4f', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+                    {isDesativado ? 'Ativar' : 'Desativar'}
+                  </button>
+                </div>
               </div>
             );
           })}
         </div>
-
-        {/* US03 e RF12: Lista de Presença Específica */}
-        <h2>Controle de Presença</h2>
-        <div style={{ marginBottom: '15px' }}>
-          <label style={{ fontWeight: 'bold', marginRight: '10px' }}>Selecione o Evento para a Chamada: </label>
-          <select value={eventoSelecionadoId} onChange={e => setEventoSelecionadoId(e.target.value)} style={{ padding: '8px', minWidth: '300px' }}>
-            <option value="">-- Escolha um evento --</option>
-            {eventos.map(e => (
-              <option key={e.id} value={e.id}>{e.titulo}</option>
-            ))}
-          </select>
-        </div>
-
-        {eventoSelecionadoId && (
-          <table style={{ width: '100%', maxWidth: '800px', borderCollapse: 'collapse', marginTop: '10px' }}>
-            <thead>
-              <tr style={{ backgroundColor: '#f5f5f5', textAlign: 'left' }}>
-                <th style={{ padding: '12px', borderBottom: '2px solid #ccc' }}>RA</th>
-                <th style={{ padding: '12px', borderBottom: '2px solid #ccc' }}>Nome do Aluno</th>
-                <th style={{ padding: '12px', borderBottom: '2px solid #ccc' }}>Ação</th>
-              </tr>
-            </thead>
-            <tbody>
-              {listaInscritos.length === 0 ? (
-                <tr><td colSpan="3" style={{ padding: '15px', textAlign: 'center' }}>Nenhum aluno inscrito neste evento ainda.</td></tr>
-              ) : (
-                listaInscritos.map((aluno, index) => (
-                  <tr key={index}>
-                    <td style={{ padding: '12px', borderBottom: '1px solid #eee' }}>{aluno.ra}</td>
-                    <td style={{ padding: '12px', borderBottom: '1px solid #eee' }}>{aluno.nome}</td>
-                    <td style={{ padding: '12px', borderBottom: '1px solid #eee' }}>
-                      <button onClick={() => registrarPresenca(aluno.email, 'presente')} style={{ marginRight: '10px', padding: '6px 12px', backgroundColor: presencas[aluno.email] === 'presente' ? '#52c41a' : '#ccc', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Presente</button>
-                      <button onClick={() => registrarPresenca(aluno.email, 'falta')} style={{ padding: '6px 12px', backgroundColor: presencas[aluno.email] === 'falta' ? '#ff4d4f' : '#ccc', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Falta</button>
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        )}
       </div>
     </>
   );

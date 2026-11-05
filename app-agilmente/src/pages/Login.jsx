@@ -23,12 +23,8 @@ export default function Login() {
       const alunoEncontrado = usuariosSalvos.find(u => u.email === email && u.senha === senha);
       
       if (alunoEncontrado) {
-        // Agora salvamos os dados completos do aluno na sessão
         localStorage.setItem('usuarioLogado', JSON.stringify({ 
-          tipo: 'aluno', 
-          nome: alunoEncontrado.nome,
-          email: alunoEncontrado.email,
-          ra: alunoEncontrado.ra
+          tipo: 'aluno', nome: alunoEncontrado.nome, email: alunoEncontrado.email, ra: alunoEncontrado.ra
         }));
         navigate('/catalogo');
       } else {
@@ -36,8 +32,14 @@ export default function Login() {
       }
     } else {
       const emailJaExiste = usuariosSalvos.find(u => u.email === email);
+      const raJaExiste = usuariosSalvos.find(u => u.ra === ra); // Verifica RA duplicado
+
       if (emailJaExiste) {
         alert('Este e-mail já está cadastrado!');
+        return;
+      }
+      if (raJaExiste) {
+        alert('Este RA já está em uso por outro aluno!');
         return;
       }
 

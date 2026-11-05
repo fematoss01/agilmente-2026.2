@@ -1,6 +1,13 @@
 import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 
+const formatarData = (dataStr) => {
+  if (!dataStr) return '';
+  const partes = dataStr.split('-');
+  if (partes.length !== 3) return dataStr;
+  return `${partes[2]}/${partes[1]}/${partes[0]}`;
+};
+
 export default function Cronograma() {
   const [meusEventos, setMeusEventos] = useState([]);
 
@@ -37,7 +44,7 @@ export default function Cronograma() {
             {meusEventos.map((evento) => (
               <div key={evento.id} style={{ borderLeft: '5px solid #1890ff', padding: '15px', backgroundColor: '#f9f9f9', borderRadius: '4px', maxWidth: '600px' }}>
                 <h3 style={{ margin: '0 0 10px 0' }}>{evento.titulo} ({evento.tipo})</h3>
-                <p style={{ margin: '5px 0' }}><strong>Data:</strong> {evento.data} - {evento.horario}</p>
+                <p style={{ margin: '5px 0' }}><strong>Data:</strong> {formatarData(evento.data)} - {evento.horario}</p>
                 <p style={{ margin: '5px 0' }}><strong>Local:</strong> {evento.local}</p>
               </div>
             ))}
