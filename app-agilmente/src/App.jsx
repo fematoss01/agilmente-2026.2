@@ -1,3 +1,4 @@
+// src/App.jsx
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
 import Catalogo from './pages/Catalogo';
@@ -7,7 +8,7 @@ import ControlePresenca from './pages/ControlePresenca';
 
 export default function App() {
   return (
-    <div style={{ backgroundColor: 'white', color: 'black' }}>
+    <div style={{ backgroundColor: '#f0f2f5', color: 'black', minHeight: '100vh' }}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to="/login" replace />} />

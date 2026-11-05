@@ -1,0 +1,29 @@
+/* src/App.css */
+body {
+  background-color: #f0f2f5;
+  margin: 0;
+  color: #333;
+}
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #eaeaea;
+  overflow: hidden; 
+  word-break: break-word;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-animado {
+  transition: filter 0.2s;
+}
+
+.btn-animado:hover {
+  filter: brightness(0.9);
+}
