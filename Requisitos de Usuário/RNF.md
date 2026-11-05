@@ -6,7 +6,7 @@
 | :--: | :-----------------------------------------------------------------------: |:-------------: | :--------: | :-----------------: |
 | RNF01 |  O usuário deve ser capaz de, ao realizar login, consultar eventos sem realizar cliques na página. | Produto/Usabilidade               |Média       |    RF05             |
 | RNF02 |  O usuário deve ser capaz de criar conta e realizar login em sua conta em 7 minutos.     |  Produto/Usabilidade     |Média        |    RF1, RF2              |
-| RNF03 |  O sistema deve ser implementado na linguagem usando HTML, CSS, JavaScript.              |  Organizacionais/Implementação       |Baixa       |     -               |
+| RNF03 |  O front-end do sistema deve ser implementado utilizando uma biblioteca baseada em componentes (como React.js), com estilização via framework CSS (como Tailwind ou Bootstrap) e persistência de dados local simulada.             |  Organizacionais/Implementação       |Baixa       |     -               |
 | RNF04 |  O sistema deve ser implementado em no máximo 1 semestre.                                |  Organizacionais/Eficiência          |Alta       |     -               |
 | RNF05 |  O primeiro protótipo do sistema deve ser concluído em 3 meses após o levantamento de requisitos. |  Organizacionais/Implementação       |Média       |     -               |
 | RNF06 |  O primeiro protótipo deve possuir ao menos o front-end.                                 |  Organizacionais/Implementação       |Média       |     -               |
