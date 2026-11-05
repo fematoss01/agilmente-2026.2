@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
 import Catalogo from './pages/Catalogo';
 import Cronograma from './pages/Cronograma';
+import PainelOrganizador from './pages/PainelOrganizador';
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/catalogo" element={<Catalogo />} />
           <Route path="/cronograma" element={<Cronograma />} />
+          <Route path="/painel" element={<PainelOrganizador />} />
         </Routes>
       </BrowserRouter>
     </div>
