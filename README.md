@@ -9,6 +9,9 @@
 * [Igor Rafael Pitoli](https://github.com/IgorPitoli007)
 * [Mateus Rodrigues Meretica](https://github.com/matrmeretica)
 
+## 🎥 Vídeo de Apresentação
+* [Assista à apresentação e demonstração do projeto no YouTube](https://youtu.be/Xts2wFPwuBs)
+
 ## 💻 Sobre o Projeto
 **Objetivo:** 
 Desenvolver um sistema de gestão e inscrições para Semanas Acadêmicas, centralizando a programação do evento e facilitando a participação dos alunos através de uma plataforma acessível e organizada.
@@ -24,8 +27,7 @@ Desenvolver um sistema de gestão e inscrições para Semanas Acadêmicas, centr
 * **Organizadores/Instituição:** Para gerenciamento das atividades, controle de vagas e emissão de listas de presença.
 
 ## 📂 Sumário de Documentos do Repositório
-Por enquanto os links estão inativos, conforme orientação da professora.
 
-* Prototipação
-* Requisitos de Usuário
-* Requisitos de Sistema
+* [Prototipação](https://github.com/fematoss01/agilmente-2026.2/tree/main/Prototipa%C3%A7%C3%A3o)
+* [Requisitos de Usuário](https://github.com/fematoss01/agilmente-2026.2/tree/main/Requisitos%20de%20Usu%C3%A1rio)
+* [Requisitos de Sistema](https://github.com/fematoss01/agilmente-2026.2/tree/main/Requisitos%20de%20Sistema)
