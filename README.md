@@ -28,6 +28,7 @@ Desenvolver um sistema de gestão e inscrições para Semanas Acadêmicas, centr
 
 ## 📂 Sumário de Documentos do Repositório
 
-* [Prototipação](https://github.com/fematoss01/agilmente-2026.2/tree/main/Prototipa%C3%A7%C3%A3o)
+* [Prototipação (Telas e Fluxos)](https://github.com/fematoss01/agilmente-2026.2/tree/main/Prototipa%C3%A7%C3%A3o)
+* [Protótipo de Alta Fidelidade Funcional (Código React)](https://github.com/fematoss01/agilmente-2026.2/tree/main/app-agilmente)
 * [Requisitos de Usuário](https://github.com/fematoss01/agilmente-2026.2/tree/main/Requisitos%20de%20Usu%C3%A1rio)
 * [Requisitos de Sistema](https://github.com/fematoss01/agilmente-2026.2/tree/main/Requisitos%20de%20Sistema)
